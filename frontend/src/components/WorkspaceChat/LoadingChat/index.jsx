@@ -1,14 +1,18 @@
 import { isMobile } from "react-device-detect";
 import * as Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useTranslation } from "react-i18next";
 
 export default function LoadingChat() {
+  const { i18n } = useTranslation();
+  const isRTL = i18n.language?.toLowerCase() === "fa";
   const highlightColor = "var(--theme-bg-primary)";
   const baseColor = "var(--theme-bg-secondary)";
   return (
     <div
-      className="transition-all duration-500 relative md:ml-[2px] md:mr-[16px] md:my-[16px] md:rounded-[16px] bg-theme-bg-secondary w-full h-full overflow-y-scroll no-scroll p-4"
+      className="transition-all duration-500 relative md:ms-[2px] md:me-[16px] md:my-[16px] md:rounded-[16px] bg-theme-bg-secondary w-full h-full overflow-y-scroll no-scroll p-4"
       style={{ height: "calc(100% - 32px)" }}
+      dir={isRTL ? "rtl" : "ltr"}
     >
       <Skeleton.default
         height="100px"

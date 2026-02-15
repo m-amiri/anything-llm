@@ -193,6 +193,13 @@ export default {
           '"Segoe UI Emoji"',
           '"Segoe UI Symbol"',
           '"Noto Color Emoji"'
+        ],
+        farsi: [
+          "vazirmatn",
+          "ui-sans-serif",
+          "system-ui",
+          "-apple-system",
+          "sans-serif"
         ]
       },
       animation: {
@@ -290,6 +297,8 @@ export default {
     function ({ addVariant }) {
       addVariant('light', '.light &') // Add the `light:` variant
       addVariant('pwa', '.pwa &') // Add the `pwa:` variant
+      addVariant('rtl', '[dir="rtl"] &') // Add the `rtl:` variant for RTL support
+      addVariant('ltr', '[dir="ltr"] &') // Add the `ltr:` variant for LTR support
     },
   ]
 }

@@ -23,8 +23,10 @@ import SpeechRecognition, {
 import { ChatTooltips } from "./ChatTooltips";
 import { MetricsProvider } from "./ChatHistory/HistoricalMessage/Actions/RenderMetrics";
 import useChatContainerQuickScroll from "@/hooks/useChatContainerQuickScroll";
+import { useTranslation } from "react-i18next";
 
 export default function ChatContainer({ workspace, knownHistory = [] }) {
+  const { i18n } = useTranslation();
   const { threadSlug = null } = useParams();
   const [loadingResponse, setLoadingResponse] = useState(false);
   const [chatHistory, setChatHistory] = useState(knownHistory);
@@ -294,10 +296,13 @@ export default function ChatContainer({ workspace, knownHistory = [] }) {
     handleWSS();
   }, [socketId]);
 
+  const isRTL = i18n.language?.toLowerCase() === "fa";
+
   return (
     <div
       style={{ height: isMobile ? "100%" : "calc(100% - 32px)" }}
-      className="transition-all duration-500 relative md:ml-[2px] md:mr-[16px] md:my-[16px] md:rounded-[16px] bg-theme-bg-secondary w-full h-full overflow-y-scroll no-scroll z-[2]"
+      className="transition-all duration-500 relative md:ms-[2px] md:me-[16px] md:my-[16px] md:rounded-[16px] bg-theme-bg-secondary w-full h-full overflow-y-scroll no-scroll z-[2]"
+      dir={isRTL ? "rtl" : "ltr"}
     >
       {isMobile && <SidebarMobileHeader />}
       <DnDFileUploaderWrapper>
